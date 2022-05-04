@@ -1,0 +1,71 @@
+<div class="panel">
+  <div class="container">
+    <h3>Ajouter Film</h3>
+
+    <div [hidden]="submitted" style="width: 400px;">
+      <form [formGroup]="registerForm" (ngSubmit)="onSumbit()" >
+        
+        <div class="form-group">
+           <label for="name">Nom du film</label>
+           <input type="text" class="form-control" formControlName="name" 
+              [ngClass]="{'is-invalid': submitted && form['name'].errors}" class="form-control" required>
+            <div *ngIf="submitted && form['name'].errors" class="invalid-feedback">
+              <div *ngIf="form['name'].errors?.['required']"> Name is required.</div>
+              <div *ngIf="form['name'].errors?.['minLength']">   Name must be at least 2 characters long.</div>
+            </div>  
+        </div> 
+        
+        <div class="form-group">
+            <label for="name">Genre du film </label>
+            <select formControlName="gender" 
+              class="form-control" [ngClass]="{'is-invalid': submitted && form['gender'].errors}" class="form-control">
+                  <option value=""></option>
+                  <option value="Action">Action</option>
+                  <option value="Fiction">Fiction</option>
+                  <option value="Aventure">Aventure</option>
+                  <option value="Comédie">Comédie</option>
+                  <option value="Comédie Dramatique">Comédie Dramatique</option>
+                  <option value="Drame">Drame</option>
+                  <option value="Fantastique">Fantastique</option>
+                  <option value="Guerre">Guerre</option>
+                  <option value="Policier">Policier</option>
+                  <option value="Horreur">Horreur</option>
+                  <option value="Western">Western</option>
+                  <option value="Science-fiction">Science-fiction</option>
+                  <option value="Documentaire">Documentaire</option>
+                  <option value="Romantique">Romantique</option>
+            </select>
+            <div *ngIf="submitted && form['gender'].errors" class="invalid-feedback">
+              <div *ngIf="form['gender'].errors?.['required']"> Champ genre est obligatoir</div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="name">Descrition du film</label>
+            <textarea name="paragraph_text" cols="50" rows="10" class="form-control"
+              formControlName="description"> </textarea>
+              <div *ngIf="submitted && form['description'].errors" class="invalid-feedback">
+                <div *ngIf="form['gender'].errors?.['required']"> Champ genre est obligatoir</div>
+                <div *ngIf="form['gender'].errors?.['minLength']"> La description doit contenir au minimum 10 caractére.</div>
+                <div *ngIf="form['gender'].errors?.['pattern']"> Veuillez révisez la description du film.</div> 
+              </div>
+        </div>
+        
+        <div class="form-group">
+            <label for="name">URL du film</label>
+            <input type="text" class="form-control" id="url" formControlName="url">
+            <div *ngIf="submitted && form['url'].errors" class="invalid-feedback">
+              <div *ngIf="form['url'].errors?.['required']"> Champ URL est obligatoir</div>
+              <div *ngIf="form['url'].errors?.['pattern']"> Veuillez saissir un URL correct.</div>
+            </div>    
+        </div>
+                
+          <button type="submit" class="btn btn-outline-success btn-lg" >Submit</button>
+          
+      </form> 
+    </div>
+
+    <div [hidden]="!submitted">
+      <h4>You submitted successfully!</h4>
+    </div>
+</div></div>

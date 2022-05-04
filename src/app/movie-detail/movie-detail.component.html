@@ -1,0 +1,22 @@
+<h2>Movie Details</h2> 
+
+<hr/>
+<div *ngIf="movie">
+  <div>
+    <label><b>Nom du film: </b></label> {{movie.name}}
+  </div>
+  <div>
+    <label><b> Genre du film </b></label> {{movie.gender}}
+  </div> 
+  <div>
+    <label><b>Description du film: </b></label> {{movie.description}}
+  </div>
+</div>
+
+<br>
+<a href="{{movie.url}}"><button class="btn btn-secondary">Regarder</button></a>
+
+
+<br>
+<br>
+<button (click)="list()" class="btn btn-primary">Retour au Movies List</button><br>
